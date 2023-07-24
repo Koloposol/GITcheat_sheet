@@ -53,12 +53,12 @@
 ### Типичный жизненный цикл файла в Git
 
 ```mermaid
-graph LR;
-untracked(неотслеживаемый) -- "git add" --> staged(в списке на коммит)+tracked;
-staged(в списке на коммит)+tracked -- "git commit" --> tracked(отслеживаемый)/commited;
-tracked(отслеживаемый)/commited -- "Изменения" --> modified(измененный);
-modified(измененный) -- "git add" --> staged(в списке на коммит)+tracked;
-staged(в списке на коммит)+tracked -- "Изменения" --> modified(измененный);
+flowchart TD;
+    un(untracked - неотслеживаемый) --> |git add| st[staged - в списке на коммит + tracked];
+    st[staged - в списке на коммит + tracked] --> |git commit| tr[tracked - отслеживаемый/commited];
+    tr[tracked - отслеживаемый/commited] --> |Изменения| md(modified - измененный);
+    md(modified - измененный) --> |git add| st[staged - в списке на коммит + tracked];
+    st[staged - в списке на коммит + tracked] --> |Изменения| md(modified - измененный);
 ```
 
 ---
